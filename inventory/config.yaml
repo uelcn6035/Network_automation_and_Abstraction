@@ -1,0 +1,16 @@
+---
+
+inventory:
+    plugin: SimpleInventory
+    options:
+        defaults_file: "/root/cn6000_automation/inventory/defaults.yaml"
+        group_file: "/root/cn6000_automation/inventory/groups.yaml"
+        host_file: "/root/cn6000_automation/inventory/hosts.yaml"
+
+runner:
+    options:
+        num_workers: 14
+    plugin: "threaded"
+
+logging:
+  enabled: true

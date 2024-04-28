@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Dashboard</title>
+    <!-- Add any CSS stylesheets or external libraries here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Add any JavaScript libraries or scripts here -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <!-- Add favicon -->
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png">
+    <!-- Add custom CSS for image positioning -->
+    <style>
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999; /* Ensure the image stays on top */
+        }
+        .logo-container img {
+            width: 50px; /* Adjust width as needed */
+            height: 50px; /* Adjust height as needed */
+            border-radius: 50%; /* Make the image round */
+        }
+        .additional-links {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 9999; /* Ensure the links stay on top */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand">myNet@cn6000</a>
+            <div class="logo-container">
+                <img src="https://uelarchives.education/wp-content/uploads/2021/03/87.uel-logo-800x800.jpg" alt="UEL Logo">
+            </div>
+            <div class="additional-links">
+                <a href="#">Config Rollback</a> | <a href="#">Perform Ping Test</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Add navigation links here -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Dashboard</a>
+                    </li>
+                    <!-- Add "Validate Device" link as a separate link beside the dashboard -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Validate Device</a>
+                    </li>
+                    <!-- Add more navigation links as needed -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page content -->
+    <div class="container mt-4">
+        {% block content %}
+        <!-- This block will be overridden by child templates -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">&copy; 2024 Network Automation by Jeleel@University of East London | Supervised by Umaima Haider</span>
+        </div>
+    </footer>
+</body>
+</html>

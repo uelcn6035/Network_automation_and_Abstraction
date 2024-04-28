@@ -1,0 +1,5 @@
+snmp-server community {{ host.cn6000_facts.snmp_config.community }} {{ host.cn6000_facts.snmp_config.permissions[0] }}
+snmp-server community {{ host.cn6000_facts.snmp_config.community }} {{ host.cn6000_facts.snmp_config.permissions[1] }}
+{% if host.cn6000_facts.snmp_config.enable == 'traps' %}
+snmp-server enable traps
+{% endif %}

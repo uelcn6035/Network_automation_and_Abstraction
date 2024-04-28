@@ -1,0 +1,80 @@
+! Command: show running-config
+! device: LEAF-2-3 (vEOS-lab, EOS-4.31.1F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username cn6000_project_admin privilege 15 secret sha512 $6$JyLuvEx/d.Db1NaH$8jYLPLeYjUiSAofBT7zW74XXd60yh1S41kOYjazpn6.aSv38AgycTW1ENMv9OxJ.wTSm/6bJGt71apLQPFp2l.
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname LEAF-2-3
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 2
+   name database
+!
+vlan 3
+   name linux_server
+!
+vlan 4
+   name admin_s
+!
+management api http-commands
+   no shutdown
+!
+interface Ethernet1
+   no switchport
+   ip address 10.10.50.21/30
+!
+interface Ethernet2
+   no switchport
+   ip address 10.10.50.17/30
+!
+interface Ethernet3
+   switchport access vlan 3
+!
+interface Ethernet4
+   switchport access vlan 2
+!
+interface Ethernet5
+   switchport access vlan 4
+!
+interface Loopback0
+   ip address 3.3.3.3/32
+!
+interface Management1
+   ip address 172.16.10.3/24
+!
+interface Vlan2
+   ip address virtual 10.10.70.14/28
+!
+interface Vlan3
+   ip address virtual 10.10.70.30/28
+!
+interface Vlan4
+   ip address virtual 10.10.70.46/28
+!
+interface Vxlan1
+   vxlan udp-port 4789
+!
+ip routing
+!
+router ospf 1
+   network 3.3.3.3/32 area 0.0.0.0
+   network 10.10.50.16/30 area 0.0.0.0
+   network 10.10.50.20/30 area 0.0.0.0
+   network 10.10.70.0/28 area 0.0.0.0
+   network 10.10.70.16/28 area 0.0.0.0
+   network 10.10.70.32/28 area 0.0.0.0
+   max-lsa 12000
+!
+end

@@ -1,0 +1,48 @@
+---
+
+C-TOK-1-3:
+    hostname: "192.168.10.3"
+    groups:
+        - tokyo_branch
+        - last_resort
+
+D-LAG-3-2:
+    hostname: "10.10.10.2"
+    groups:
+        - lagos_branch
+        - dhcp_server
+        
+D-LAG-2-3:
+    hostname: "10.10.10.3"
+    groups:
+        - lagos_branch
+        - dhcp_server
+
+C-LAG-1-4:
+    hostname: "10.10.10.4"
+    groups:
+        - lagos_branch
+
+LEAF-HQ-1-2:
+    hostname: "172.16.10.2"
+    groups:
+        - arista_gear
+        - leaf_switches
+    data:
+        role: leaf
+        
+LEAF-HQ-2-3:
+    hostname: "172.16.10.3"
+    groups:
+        - arista_gear
+        - leaf_switches
+    data:
+        role: leaf
+
+LEAF-HQ-3-4:
+    hostname: "172.16.10.4"
+    groups:
+        - leaf_switches
+    data:
+        role: leaf
+

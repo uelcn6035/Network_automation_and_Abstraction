@@ -1,0 +1,8 @@
+{# Check if SCP server is enabled and configure if true #}
+{% if host.cn6000_facts.ip_scp_server == "enable" %}
+ip scp server enable   {# Enable SCP server #}
+{% endif %}
+
+{# Configure archive path #}
+archive
+ path {{ host.cn6000_facts.archive.path }}   {# Set archive path #}

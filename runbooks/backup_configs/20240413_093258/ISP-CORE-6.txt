@@ -1,0 +1,168 @@
+!
+
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ISP-CORE-6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition MGMT
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+bsd-client server url https://cloudsso.cisco.com/as/token.oauth2
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name cn6000
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+cts logging verbose
+!
+!
+username cn6000_project_admin privilege 15 secret 5 $1$bgns$2sHX4vSXK3u2jfyu9lEgX0
+!
+redundancy
+!
+lldp run
+!
+ip ssh version 2
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ vrf forwarding MGMT
+ ip address 192.168.10.6 255.255.255.0
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+interface Serial1/0
+ ip address 20.10.40.41 255.255.255.252
+ serial restart-delay 0
+!
+interface Serial1/1
+ ip address 20.10.50.30 255.255.255.252
+ serial restart-delay 0
+!
+interface Serial1/2
+ ip address 20.10.40.45 255.255.255.252
+ serial restart-delay 0
+!
+interface Serial1/3
+ ip address 20.10.30.38 255.255.255.252
+ serial restart-delay 0
+!
+interface Serial2/0
+ ip address 20.10.50.26 255.255.255.252
+ serial restart-delay 0
+!
+interface Serial2/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+router ospf 1
+ network 20.10.30.36 0.0.0.3 area 0
+ network 20.10.40.40 0.0.0.3 area 0
+ network 20.10.40.44 0.0.0.3 area 0
+ network 20.10.50.24 0.0.0.3 area 0
+ network 20.10.50.28 0.0.0.3 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+end

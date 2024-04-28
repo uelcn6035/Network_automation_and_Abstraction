@@ -1,0 +1,18 @@
+{# Check if 'dhcp' is defined in 'cn6000_facts' #}
+{% if host.cn6000_facts.dhcp is defined %}
+  {# Iterate over each pool in 'dhcp.pools' #}
+  {% for pool in host.cn6000_facts.dhcp.pools %}
+    ip dhcp pool {{ pool.name }}
+    network {{ pool.network }} {{ pool.subnet_mask }}
+    default-router {{ pool.default_router }}
+  {% endfor %}
+  {# Check if 'excluded_addresses' is defined in 'dhcp' #}
+  {% if host.cn6000_facts.dhcp.excluded_addresses is defined %}
+    {# Iterate over each range in 'dhcp.excluded_addresses' #}
+    {% for range in host.cn6000_facts.dhcp.excluded_addresses %}
+      ip dhcp excluded-address {{ range.start }} {{ range.end }}
+    {% endfor %}
+  {% endif %}
+{% else %}
+  {# No DHCP configuration found for this host #}
+{% endif %}

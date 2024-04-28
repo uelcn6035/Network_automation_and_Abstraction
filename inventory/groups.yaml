@@ -1,0 +1,36 @@
+---
+lagos_branch:
+    password: "cn6000_lagos"
+    
+tokyo_branch:
+    password: "cn6000_tokyo"
+
+isp:
+    password: "cn6000_isp"
+
+arista_gear:
+    platform: "eos"
+
+load_balancing:
+    hosts:
+        A-TOK-2-2: {}
+        A-TOK-3-5: {}
+
+dhcp_server:
+    hosts:
+        DHCP-TOK-1-4: {}
+        D-LAG-3-2: {}
+        D-LAG-2-3: {}
+
+leaf_switches:
+    hosts:
+        LEAF-HQ-2-3: {}
+        LEAF-HQ-3-4: {}
+        LEAF-HQ-1-2: {}
+
+last_resort:
+    hosts:
+        SPINE-HQ-1-5: {}
+        SPINE-HQ-2-6: {}
+        C-LAG-1-4: {}
+        C-TOK-1-3: {}

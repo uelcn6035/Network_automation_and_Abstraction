@@ -1,0 +1,17 @@
+crypto isakmmmp enable
+crypto isakmp policy {{ host.cn6000_facts.ipsec_config.isakmp_policy }}
+ hash {{ host.cn6000_facts.ipsec_config.hash }}
+ authentication {{ host.cn6000_facts.ipsec_config.authentication }}
+ encryption {{ host.cn6000_facts.ipsec_config.encryption }}
+ lifetime {{ host.cn6000_facts.ipsec_config.lifetime }}
+ group {{ host.cn6000_facts.ipsec_config.group }}
+
+crypto ipsec transform-set {{ host.cn6000_facts.ipsec_config.transform_set }} esp-3des esp-md5-hmac
+
+{% for acl in host.cn6000_facts.ipsec_config.access_list %}
+access-list {{ host.cn6000_facts.ipsec_config.crypto_map.match_address }} {{ acl }}
+{% endfor %}
+
+{% for key in host.cn6000_facts.ipsec_config.isakmp_keys %}
+crypto isakmp key {{ key.key }} address {{ key.address }}
+{% endfor %}

@@ -1,0 +1,19 @@
+{# Configure OSPF #}
+{% if host.cn6000_facts.router_ospf is defined %}
+router ospf {{ host.cn6000_facts.router_ospf.id | default('') }}
+
+{# Iterate over OSPF networks and configure them #}
+{% for network in host.cn6000_facts.router_ospf.networks | default([]) %}
+ network {{ network.address | default('') }} {{ network.wildcard_mask | default('') }} area {{ network.area | default('') }}
+{% endfor %}
+{% endif %}
+
+{# Check if there are any static routes defined and configure them #}
+{% if host.cn6000_facts.ip_route is defined %}
+ip route {{ host.cn6000_facts.ip_route.destination | default('') }} {{ host.cn6000_facts.ip_route.subnet_mask | default('') }} {{ host.cn6000_facts.ip_route.next_hop | default('') }}
+{% endif %}
+
+{# Check if ip_routing is defined #}
+{% if host.cn6000_facts.ip_routing is defined %}
+ip {{ host.cn6000_facts.ip_routing }}
+{% endif %}

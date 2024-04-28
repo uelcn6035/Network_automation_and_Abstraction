@@ -1,0 +1,69 @@
+Device Facts:
+  fqdn: C-LAG-3-2.cn6000
+  hostname: C-LAG-3-2
+  interface_list:
+  - Ethernet0/0
+  - Ethernet0/1
+  - Ethernet0/2
+  - Ethernet0/2.30
+  - Ethernet0/3
+  model: Unknown
+  os_version: Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.5(2)T, DEVELOPMENT
+    TEST SOFTWARE
+  serial_number: '67109488'
+  uptime: 1560.0
+  vendor: Cisco
+Interfaces:
+  Ethernet0/0:
+    description: ''
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:70:00
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/1:
+    description: ''
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:70:10
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/2:
+    description: ''
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:70:20
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/2.30:
+    description: ''
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:70:20
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/3:
+    description: ''
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:70:30
+    mtu: 1500
+    speed: 10.0
+LLDP Neighbor Details:
+  Ethernet0/1:
+  - Chassis id: aabb.cc01.b000
+    Local Intf: Ethernet0/1
+    Port Description: Ethernet0/2
+    Port id: Et0/2
+    System Name: C-LAG-1-4.cn6000
+  Ethernet0/3:
+  - Chassis id: aabb.cc02.b000
+    Local Intf: Ethernet0/3
+    Port Description: Ethernet0/3
+    Port id: Et0/3
+    System Name: C-LAG-2-3.cn6000

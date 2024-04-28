@@ -1,0 +1,178 @@
+!
+
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SPINE-HQ-1-5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition MANAGEMENT
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name cn6000_scotland
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username cn6000_project_admin privilege 15 secret 5 $1$VeEu$zybxw6WeK/3SgH9gNpq7N/
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+crypto isakmp policy 20
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 5
+ lifetime 3600
+crypto isakmp key cn6000 address 20.10.30.37    
+crypto isakmp key cn6000 address 20.10.40.42    
+!
+!
+crypto ipsec transform-set cn6000_project esp-3des esp-md5-hmac 
+ mode tunnel
+!
+!
+!
+crypto map HQ1_vpn 20 ipsec-isakmp 
+ description link to HQ1
+ set peer 20.10.30.37
+ set transform-set cn6000_project 
+ match address 100
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+!
+interface GigabitEthernet0/0
+ vrf forwarding MANAGEMENT
+ ip address 172.16.10.5 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.10.50.2 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.10.50.10 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ ip address 10.10.50.18 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/4
+ ip address 20.10.50.29 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+ crypto map HQ1_vpn
+!
+router ospf 1
+ network 4.4.4.4 0.0.0.0 area 0
+ network 10.10.50.0 0.0.0.3 area 0
+ network 10.10.50.8 0.0.0.3 area 0
+ network 10.10.50.16 0.0.0.3 area 0
+ network 20.10.50.28 0.0.0.3 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+!
+!
+!
+access-list 100 permit ip 10.10.70.0 0.0.0.15 10.10.30.0 0.0.0.15
+access-list 100 permit ip 10.10.70.0 0.0.0.15 10.10.30.16 0.0.0.15
+access-list 100 permit ip 10.10.70.16 0.0.0.15 10.10.30.0 0.0.0.15
+access-list 100 permit ip 10.10.70.16 0.0.0.15 10.10.30.16 0.0.0.15
+access-list 100 permit ip 10.10.70.32 0.0.0.15 10.10.30.0 0.0.0.15
+access-list 100 permit ip 10.10.70.32 0.0.0.15 10.10.30.16 0.0.0.15
+access-list 100 permit ip 10.10.70.0 0.0.0.15 10.10.40.0 0.0.0.15
+access-list 100 permit ip 10.10.70.0 0.0.0.15 10.10.40.16 0.0.0.15
+access-list 100 permit ip 10.10.70.16 0.0.0.15 10.10.40.0 0.0.0.15
+access-list 100 permit ip 10.10.70.16 0.0.0.15 10.10.40.16 0.0.0.15
+access-list 100 permit ip 10.10.70.32 0.0.0.15 10.10.40.0 0.0.0.15
+access-list 100 permit ip 10.10.70.32 0.0.0.15 10.10.40.16 0.0.0.15
+!
+control-plane
+!
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ login local
+ transport input ssh
+!
+no scheduler allocate
+!
+end

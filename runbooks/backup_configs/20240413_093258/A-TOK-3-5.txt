@@ -1,0 +1,74 @@
+! Command: show running-config
+! device: A-TOK-3-5 (vEOS-lab, EOS-4.31.1F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username cn6000_project_admin privilege 15 secret sha512 $6$hzy31ORbcm67BWhF$9iBpExDq29pt8UsabgXgVygBtyztIf0ordpT1UaYQrsTeuFqox.KyzjL3FSvVbqODWnETLPbYKbLigYJx2SCh0
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname A-TOK-3-5
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 40
+   name finance
+!
+vlan 50
+   name production
+!
+management api http-commands
+   no shutdown
+!
+interface Port-Channel1
+   switchport mode trunk
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Ethernet3
+!
+interface Ethernet4
+   no switchport
+   ip address 10.10.30.42/30
+!
+interface Ethernet5
+   switchport mode trunk
+!
+interface Ethernet6
+   switchport access vlan 40
+!
+interface Ethernet7
+   switchport access vlan 50
+!
+interface Management1
+   ip address 192.168.10.5/24
+!
+interface Vlan40
+   ip address 10.10.30.1/28
+   vrrp 40 ipv4 10.10.30.2
+!
+interface Vlan50
+   ip address 10.10.30.17/28
+   vrrp 50 ipv4 10.10.30.18
+!
+ip routing
+!
+ip route 0.0.0.0/0 10.10.30.41
+!
+router ospf 1
+   network 10.10.30.0/30 area 0.0.0.0
+   network 10.10.30.16/30 area 0.0.0.0
+   network 10.10.30.40/30 area 0.0.0.0
+   max-lsa 12000
+!
+end

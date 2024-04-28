@@ -1,0 +1,61 @@
+---
+lldp: run
+ip_routing: routing
+snmp_config:
+  community: cn6000
+  permissions:
+    - ro
+    - rw
+  enable: traps
+interfaces:
+  - name: eth4
+    port: no switchport
+    ip_address: 10.10.30.33
+    subnet_mask: 255.255.255.252
+    status: no shutdown
+  - name: range eth1-2
+    switchport_mode: access
+    switchport_access_vlan: 40
+  - name: eth3
+    switchport_mode: access
+    switchport_access_vlan: 50
+  - name: range eth5-7
+    channel_group: 1
+    channel_group_mode: active
+  - name: port-channel 1
+    switchport_mode: trunk
+  - name: range eth4-7
+    lldp1: lldp receive
+vlans:
+  - id: 40
+    name: finance
+    ip_address: 10.10.30.3
+    subnet_mask: 255.255.255.240
+    vrrp:
+      id: 40
+      priority_level: 200
+      ipv4: 10.10.30.2
+  - id: 50
+    name: production
+    ip_address: 10.10.30.19
+    subnet_mask: 255.255.255.240
+    vrrp:
+      id: 50
+      priority_level: 200
+      ipv4: 10.10.30.18
+ip_route:
+  destination: 0.0.0.0
+  subnet_mask: 0.0.0.0
+  next_hop: 10.10.30.34
+router_ospf:
+  id: 1
+  networks:
+    - address: 10.10.30.0
+      wildcard_mask: 0.0.0.3
+      area: 0
+    - address: 10.10.30.16
+      wildcard_mask: 0.0.0.3
+      area: 0
+    - address: 10.10.30.32
+      wildcard_mask: 0.0.0.3
+      area: 0

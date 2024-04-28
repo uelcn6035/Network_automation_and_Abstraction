@@ -1,0 +1,177 @@
+<!-- dashboard.html -->
+
+{% extends "master.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <table class="table table-bordered">
+        <!-- Table header -->
+        <thead>
+            <tr>
+                <th>Hostname</th>
+                <th style="text-align: center;">Vendor</th>
+                <th style="text-align: center;">Up Int</th>
+                <th style="text-align: center;">Down Int</th>
+                <th style="text-align: center;">Int_Speed(avg)</th> <!-- Added average interface speed column -->
+                <th style="text-align: center;">Uptime</th>
+            </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+            {% for host, data in data.items() %}
+            <tr class="device-row">
+                <!-- Display device hostname with a link -->
+                <td><a href="#" class="device-link">{{ data.hostname }}</a></td>
+                <!-- Display vendor information -->
+                <td class="text-center">{{ data.vendor }}</td>
+                <!-- Display up interface count -->
+                <td class="text-center text-success">{{ data.up_count }}</td>
+                <!-- Display down interface count -->
+                <td class="text-center text-danger down-int">{{ data.down_count }}</td>
+                <!-- Display average interface speed with distinct styling -->
+                <td class="text-center avg-speed-column" style="background-color: #e7f2ff; color: #007bff;">{{ '%.2f Mbps' % data.average_speed }}</td>
+                <!-- Display uptime -->
+                <td class="text-center uptime-column">{{ '%.1f' % data.uptime }}</td>
+            </tr>
+            <!-- Additional row for detailed device info (hidden by default) -->
+            <!-- Additional row for detailed device info (hidden by default) -->
+            <tr class="device-details-row" style="display: none;">
+                <td colspan="6">
+                    <table class="nested-table">
+                        <tr>
+                            <td style="width: 40%; vertical-align: top;">
+                                <div class="ml-4 device-details">
+                                    <!-- Additional detailed info here -->
+                                    <p>OS Version: {{ data.os_version }}</p>
+                                    <p>Serial Number: {{ data.serial_number }}</p>
+                                    <p>FQDN: {{ data.fqdn }}</p>
+                                    <!-- Add more details as needed -->
+
+                                    <!-- Link to query connected neighbors -->
+                                    <a href="#" class="query-neighbors-link" data-host="{{ data.hostname }}">Query Connected Neighbors</a>
+
+                                    <!-- Container to display LLDP neighbors -->
+                                    <div class="lldp-neighbors-container" style="display: none;">
+                                        <p class="neighbor-notice">Click neighbor for detail:</p>
+                                        <ul class="lldp-neighbors-list"></ul>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width: 60%; vertical-align: top;">
+                                <!-- Container to display uptime as graph -->
+                                <div class="uptime-graph-container">
+                                    <canvas class="uptime-chart"></canvas>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- JavaScript code -->
+<script>
+    let currentlyExpandedDevice = null;
+
+    // Function to toggle device details visibility
+    function toggleDeviceDetails(link) {
+        const detailsRow = link.closest('.device-row').nextElementSibling;
+        const uptimeColumn = link.closest('.device-row').querySelector('.uptime-column');
+        const uptimeColumns = document.querySelectorAll('.uptime-column');
+
+        // If the clicked device is already expanded, collapse it
+        if (detailsRow.style.display === 'table-row') {
+            detailsRow.style.display = 'none';
+            uptimeColumns.forEach(column => {
+                column.style.display = 'table-cell'; // Show uptime columns for collapsed devices
+            });
+            link.style.fontWeight = 'normal'; // Remove underline style
+            currentlyExpandedDevice = null;
+            return;
+        }
+
+        // Collapse the currently expanded device (if any)
+        if (currentlyExpandedDevice !== null) {
+            const currentlyExpandedDetailsRow = currentlyExpandedDevice.closest('.device-row').nextElementSibling;
+            currentlyExpandedDetailsRow.style.display = 'none';
+            const currentUptimeColumn = currentlyExpandedDevice.closest('.device-row').querySelector('.uptime-column');
+            if (currentUptimeColumn) {
+                currentUptimeColumn.style.display = 'table-cell'; // Show uptime column for collapsed device
+            }
+            currentlyExpandedDevice.style.fontWeight = 'normal'; // Remove underline style from collapsed device name
+        }
+
+        // Expand the clicked device
+        detailsRow.style.display = 'table-row';
+        uptimeColumn.style.display = 'none'; // Hide the uptime column for expanded device
+        link.style.fontWeight = 'bold'; // Add underline style to expanded device name
+        currentlyExpandedDevice = link;
+
+        // Plot uptime as a graph
+        const uptimeValue = link.closest('.device-row').querySelector('.uptime-column').textContent;
+        const ctx = detailsRow.querySelector('.uptime-chart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Uptime'],
+                datasets: [{
+                    label: 'Uptime',
+                    data: [parseFloat(uptimeValue)],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Blue color with opacity
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+    // Attach click event listeners to device links
+    document.querySelectorAll('.device-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            toggleDeviceDetails(this);
+        });
+    });
+
+    // Attach click event listener to query neighbors link
+    document.querySelectorAll('.query-neighbors-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const neighborsContainer = this.closest('.device-details-row').querySelector('.lldp-neighbors-container');
+            neighborsContainer.style.display = 'block';
+            const host = this.dataset.host;
+            fetch(`/lldp_neighbors?host=${host}`)
+                .then(response => response.json())
+                .then(data => {
+                    const neighborsList = neighborsContainer.querySelector('.lldp-neighbors-list');
+                    neighborsList.innerHTML = ''; // Clear previous content
+
+                    // Iterate over the LLDP neighbors information and add it to the neighbors list
+                    for (const [local_intf, neighbors] of Object.entries(data)) {
+                        for (const neighbor of neighbors) {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = `Local Interface: ${local_intf}, Neighbor: ${neighbor.neighbor}, Port: ${neighbor.port}`;
+                            neighborsList.appendChild(listItem);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching LLDP neighbors:', error);
+                });
+        });
+    });
+</script>
+
+{% endblock %}

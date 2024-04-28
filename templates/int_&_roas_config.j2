@@ -1,0 +1,61 @@
+{# Check if LLDP is enabled #}
+{% if host.cn6000_facts.lldp is defined and host.cn6000_facts.lldp %}
+  lldp run
+{% endif %}
+
+{# Iterate over each interface in the host's cn6000_facts #}
+{% for interface in host.cn6000_facts.interfaces %}
+  {# Start configuration for interface #}
+  interface {{ interface.name }}
+
+  {# Check if no switchport configuration is defined for the interface #}
+  {% if interface.port is defined %}
+    {{ interface.port }}
+  {% endif %}
+
+  {# Check if switchport mode is defined #}
+  {% if interface.switchport_mode is defined %}
+    switchport mode {{ interface.switchport_mode }}
+
+    {# Check if switchport mode is access and access VLAN is defined #}
+    {% if interface.switchport_mode == 'access' and interface.switchport_access_vlan is defined %}
+      switchport access vlan {{ interface.switchport_access_vlan }}
+    {% endif %}
+
+    {# Check if switchport mode is trunk and allowed VLANs are defined #}
+    {% if interface.switchport_mode == 'trunk' and interface.switchport_trunk_allowed_vlan is defined %}
+      switchport trunk allowed vlan {{ interface.switchport_trunk_allowed_vlan }}
+    {% endif %}
+  {% endif %}
+
+  {# Check if encapsulation is defined #}
+  {% if interface.encapsulation is defined %}
+    encapsulation {{ interface.encapsulation }}
+  {% endif %}
+
+  {# Check if IP address and subnet mask are defined #}
+  {% if interface.ip_address is defined and interface.subnet_mask is defined %}
+    ip address {{ interface.ip_address }} {{ interface.subnet_mask }}
+  {% endif %}
+
+  {# Check if status is defined #}
+  {% if interface.status is defined %}
+    {{ interface.status }}
+  {% endif %}
+
+  {# Check if LLDP1 is defined #}
+  {% if interface.lldp1 is defined %}
+    {{ interface.lldp1 }}
+  {% endif %}
+
+  {# Check if LLDP2 is defined #}
+  {% if interface.lldp2 is defined %}
+    {{ interface.lldp2 }}
+  {% endif %}
+  {# End configuration for interface #}
+{% endfor %}
+
+{# Check if IP routing is enabled #}
+{% if host.cn6000_facts.ip_routing is defined and host.cn6000_facts.ip_routing %}
+  ip routing
+{% endif %}

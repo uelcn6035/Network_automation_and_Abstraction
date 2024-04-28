@@ -1,0 +1,55 @@
+---
+lldp: run
+snmp_config:
+  community: cn6000
+  permissions:
+    - ro
+    - rw
+  enable: traps
+interfaces:
+  - name: eth2
+    port: no switchport
+    ip_address: 10.10.50.9
+    subnet_mask: 255.255.255.252
+    status: no shutdown
+  - name: eth1
+    port: no switchport
+    ip_address: 10.10.50.13
+    subnet_mask: 255.255.255.252
+    status: no shutdown
+  - name: range eth3-4
+    switchport_mode: access
+    switchport_access_vlan: 2
+  - name: loopback0
+    ip_address: 2.2.2.2
+    subnet_mask: 255.255.255.255
+  - name: vxlan1
+    vxlan_source_interface: loopback0
+    vxlan_vlans:
+      - vlan: 2
+        vni: 200
+    vxlan_flood_vtep: [1.1.1.1, 3.3.3.3]
+  - name: range eth1-2
+    lldp1: lldp receive
+vlans:
+  - id: 2
+    name: database
+    virtual_ip: 10.10.70.14
+    subnet_mask: 255.255.255.240
+    status: no shutdown
+ip_routing: routing
+router_ospf:
+  id: 1
+  networks:
+    - address: 10.10.50.8
+      wildcard_mask: 0.0.0.3
+      area: 0
+    - address: 10.10.50.12
+      wildcard_mask: 0.0.0.3
+      area: 0
+    - address: 10.10.70.0
+      wildcard_mask: 0.0.0.15
+      area: 0
+    - address: 2.2.2.2
+      wildcard_mask: 0.0.0.0
+      area: 0

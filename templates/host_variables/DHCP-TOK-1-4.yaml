@@ -1,0 +1,38 @@
+---
+lldp: run
+snmp_config:
+  community: cn6000
+  permissions:
+    - ro
+    - rw
+  enable: traps
+ip_scp_server: enable
+archive:
+  path: flash:archive
+interfaces:
+  - name: e0/1
+    ip_address: null
+    status: no shutdown
+  - name: e0/1.40
+    encapsulation: dot1Q 40
+    ip_address: 10.10.30.4
+    subnet_mask: 255.255.255.240
+    status: no shutdown
+  - name: e0/1.50
+    encapsulation: dot1Q 50
+    ip_address: 10.10.30.20
+    subnet_mask: 255.255.255.240
+    status: no shutdown
+  - name: range e0/1
+    lldp1: lldp receive
+    lldp2: lldp transmit
+dhcp:
+  pools:
+    - name: vlan40
+      network: 10.10.30.5
+      subnet_mask: 255.255.255.240
+      default_router: 10.10.30.2
+    - name: vlan50
+      network: 10.10.30.21
+      subnet_mask: 255.255.255.240
+      default_router: 10.10.30.18

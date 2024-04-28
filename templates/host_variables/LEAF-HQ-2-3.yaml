@@ -1,0 +1,81 @@
+---
+lldp: run
+snmp_config:
+  community: cn6000
+  permissions:
+    - ro
+    - rw
+  enable: traps
+interfaces:
+  - name: eth2
+    port: no switchport
+    ip_address: 10.10.50.17
+    subnet_mask: 255.255.255.252
+    status: no shutdown
+  - name: eth1
+    port: no switchport
+    ip_address: 10.10.50.21
+    subnet_mask: 255.255.255.252
+    status: no shutdown
+  - name: eth3
+    switchport_mode: access
+    switchport_access_vlan: 3
+  - name: eth4
+    switchport_mode: access
+    switchport_access_vlan: 2
+  - name: eth5
+    switchport_mode: access
+    switchport_access_vlan: 4
+  - name: loopback0
+    ip_address: 3.3.3.3
+    subnet_mask: 255.255.255.255
+  - name: vxlan1
+    vxlan_source_interface: loopback0
+    vxlan_vlans:
+      - vlan: 2
+        vni: 200
+      - vlan: 3
+        vni: 300
+      - vlan: 4
+        vni: 400
+    vxlan_flood_vtep: [1.1.1.1, 2.2.2.2]
+  - name: range eth1-2
+    lldp1: lldp receive
+vlans:
+  - id: 2
+    name: database
+    virtual_ip: 10.10.70.14
+    subnet_mask: 255.255.255.240
+    status: no shutdown
+  - id: 3
+    name: linux_server
+    virtual_ip: 10.10.70.30
+    subnet_mask: 255.255.255.240
+    status: no shutdown
+  - id: 4
+    name: admin_s
+    virtual_ip: 10.10.70.46
+    subnet_mask: 255.255.255.240
+    status: no shutdown
+ip_routing: routing
+router_ospf:
+  id: 1
+  networks:
+    - address: 10.10.50.16
+      wildcard_mask: 0.0.0.3
+      area: 0
+    - address: 10.10.50.20
+      wildcard_mask: 0.0.0.3
+      area: 0
+    - address: 10.10.70.0
+      wildcard_mask: 0.0.0.15
+      area: 0
+    - address: 10.10.70.16
+      wildcard_mask: 0.0.0.15
+      area: 0
+    - address: 10.10.70.32
+      wildcard_mask: 0.0.0.15
+      area: 0
+    - address: 3.3.3.3
+      wildcard_mask: 0.0.0.0
+      area: 0

@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: nornir_napalm
+Version: 0.5.0
+Summary: NAPALM's plugins for nornir
+License: Apache-2.0
+Author: David Barroso
+Author-email: dbarrosop@dravetech.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: napalm (>=5,<6)
+Requires-Dist: nornir (>=3,<4)

@@ -1,0 +1,19 @@
+{% for interface in host.cn6000_facts.interfaces if interface.vxlan_vlans is defined %}
+  {# Define interface configuration #}
+  interface {{ interface.name }}
+
+  {# Check if VXLAN configuration is defined #}
+  {% if interface.vxlan_source_interface is defined %}
+    {# Configure VXLAN source interface #}
+    vxlan source-interface {{ interface.vxlan_source_interface }}
+
+    {# Iterate over VXLAN VLANs #}
+    {% for vlan in interface.vxlan_vlans %}
+      {# Configure VXLAN VLANs #}
+      vxlan vlan {{ vlan.vlan }} vni {{ vlan.vni }}
+    {% endfor %}
+
+    {# Configure VXLAN flood VTEP #}
+    vxlan flood vtep {{ interface.vxlan_flood_vtep | join(" ") }}
+  {% endif %}
+{% endfor %}

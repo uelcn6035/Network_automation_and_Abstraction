@@ -1,0 +1,7 @@
+---
+
+platform: "ios"
+username: "cn6000_project_admin"
+password: "cn6000_scotland"
+data:
+    warning: "authorised access only"

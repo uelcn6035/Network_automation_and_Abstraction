@@ -1,0 +1,398 @@
+2024-04-15 10:47:58,707 -  nornir.core -     INFO -        run() - Running task 'connection_test' with args {} on 13 hosts
+2024-04-15 10:48:30,314 -  nornir.core -     INFO -        run() - Running task 'query_lldp_neighbors' with args {'host': 'DHCP-TOK-1-4'} on 13 hosts
+2024-04-15 10:48:30,316 - nornir.core.task -    ERROR -      start() - Host 'DHCP-TOK-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,317 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-3-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,317 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,318 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-3-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,318 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-2-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,318 - nornir.core.task -    ERROR -      start() - Host 'C-LAG-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,319 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,319 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-3-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,319 - nornir.core.task -    ERROR -      start() - Host 'C-TOK-1-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,319 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-1-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,319 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-1-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,320 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-2-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,321 - nornir.core.task -    ERROR -      start() - Host 'ISP-CORE-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,679 -  nornir.core -     INFO -        run() - Running task 'query_lldp_neighbors' with args {'host': 'DHCP-TOK-1-4'} on 13 hosts
+2024-04-15 10:48:30,680 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-2-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,680 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-3-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,681 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-3-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,681 - nornir.core.task -    ERROR -      start() - Host 'C-TOK-1-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,682 - nornir.core.task -    ERROR -      start() - Host 'DHCP-TOK-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,682 - nornir.core.task -    ERROR -      start() - Host 'C-LAG-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,682 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,682 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-1-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,683 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,683 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-3-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,720 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-1-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,720 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-2-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,721 - nornir.core.task -    ERROR -      start() - Host 'ISP-CORE-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,951 -  nornir.core -     INFO -        run() - Running task 'query_lldp_neighbors' with args {'host': 'DHCP-TOK-1-4'} on 13 hosts
+2024-04-15 10:48:30,951 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-2-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,952 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-3-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,952 - nornir.core.task -    ERROR -      start() - Host 'C-TOK-1-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,953 - nornir.core.task -    ERROR -      start() - Host 'DHCP-TOK-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,953 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-3-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,954 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-1-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,954 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,954 - nornir.core.task -    ERROR -      start() - Host 'C-LAG-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,955 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-3-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,955 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,955 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-1-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,955 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-2-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:30,956 - nornir.core.task -    ERROR -      start() - Host 'ISP-CORE-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,603 -  nornir.core -     INFO -        run() - Running task 'query_lldp_neighbors' with args {'host': 'DHCP-TOK-1-4'} on 13 hosts
+2024-04-15 10:48:31,603 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-2-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,604 - nornir.core.task -    ERROR -      start() - Host 'DHCP-TOK-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,605 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-3-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,605 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,606 - nornir.core.task -    ERROR -      start() - Host 'C-TOK-1-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,606 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-3-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,606 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-1-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,607 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,607 - nornir.core.task -    ERROR -      start() - Host 'C-LAG-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,607 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-3-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,607 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-1-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,608 - nornir.core.task -    ERROR -      start() - Host 'ISP-CORE-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:31,609 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-2-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,755 -  nornir.core -     INFO -        run() - Running task 'query_lldp_neighbors' with args {'host': 'DHCP-TOK-1-4'} on 13 hosts
+2024-04-15 10:48:34,755 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-2-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,756 - nornir.core.task -    ERROR -      start() - Host 'A-TOK-3-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,756 - nornir.core.task -    ERROR -      start() - Host 'DHCP-TOK-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,757 - nornir.core.task -    ERROR -      start() - Host 'C-TOK-1-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,757 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-3-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,757 - nornir.core.task -    ERROR -      start() - Host 'D-LAG-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,758 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-1-2': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,759 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-2-3': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,759 - nornir.core.task -    ERROR -      start() - Host 'C-LAG-1-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,759 - nornir.core.task -    ERROR -      start() - Host 'LEAF-HQ-3-4': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,759 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-1-5': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,760 - nornir.core.task -    ERROR -      start() - Host 'SPINE-HQ-2-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 10:48:34,760 - nornir.core.task -    ERROR -      start() - Host 'ISP-CORE-6': task 'query_lldp_neighbors' failed with traceback:
+Traceback (most recent call last):
+  File "/root/cn6000_automation/.venv/lib/python3.8/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+TypeError: query_lldp_neighbors() got an unexpected keyword argument 'host'
+
+2024-04-15 11:35:19,705 -  nornir.core -     INFO -        run() - Running task 'connection_test' with args {} on 7 hosts
+2024-04-15 11:51:09,712 -  nornir.core -     INFO -        run() - Running task 'connection_test' with args {} on 7 hosts

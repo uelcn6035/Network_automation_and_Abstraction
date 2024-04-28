@@ -1,0 +1,22 @@
+{# Iterate over each interface in the host's cn6000_facts #}
+{% for interface in host.cn6000_facts.interfaces %}
+  {# Begin configuration for interface #}
+  interface {{ interface.name }}
+
+  {# Check if channel group is defined for the interface #}
+  {% if interface.channel_group is defined %}
+    {# Configure interface as a member of an EtherChannel #}
+    channel-group {{ interface.channel_group }} mode {{ interface.channel_group_mode | default('active') }}
+  {# Check if switchport configuration is defined for the interface #}
+  {% elif interface.switchport is defined %}
+    {# Configure interface as a switchport #}
+    switchport
+    {# Check if switchport mode is defined #}
+    {% if interface.switchport_mode is defined %}
+      {# Set the switchport mode #}
+      switchport mode {{ interface.switchport_mode }}
+    {% endif %}
+  {% endif %}
+
+{# End configuration for interface #}
+{% endfor %}

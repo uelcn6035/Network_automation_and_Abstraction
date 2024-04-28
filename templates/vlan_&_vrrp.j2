@@ -1,0 +1,24 @@
+{% for vlan in host.cn6000_facts.vlans | default([]) %}
+vlan {{ vlan.id }}
+{% if vlan.name is defined %}
+name {{ vlan.name }}
+{% endif %}
+{% endfor %}
+
+{% for vlan in host.cn6000_facts.vlans | default([]) %}
+int vlan {{ vlan.id }}
+{% if vlan.virtual_ip is defined %}
+ip address virtual {{ vlan.virtual_ip }} {{ vlan.subnet_mask }}
+{% elif vlan.ip_address is defined and vlan.subnet_mask is defined %}
+ip address {{ vlan.ip_address }} {{ vlan.subnet_mask }}
+{% endif %}
+{% endfor %}
+
+{# Loop through each VLAN in the host's cn6000_facts #}
+{% for vlan in host.cn6000_facts.vlans | default([]) %}
+{% if vlan.vrrp is defined %}
+interface Vlan{{ vlan.id }}
+  vrrp {{ vlan.vrrp.id }} priority-level {{ vlan.vrrp.priority_level }}
+  vrrp {{ vlan.vrrp.id }} ipv4 {{ vlan.vrrp.ipv4 }}
+{% endif %}
+{% endfor %}
