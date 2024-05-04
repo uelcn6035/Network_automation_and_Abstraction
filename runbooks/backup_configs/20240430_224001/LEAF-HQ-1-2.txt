@@ -1,0 +1,40 @@
+! Command: show running-config
+! device: LEAF-1-2 (vEOS-lab, EOS-4.31.1F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username cn6000_project_admin privilege 15 secret sha512 $6$G6BivCXP/fcJVQPC$svU93cAqYbcBC/Cz1QaWdslBuCPEriQ1dYKp57gKSOmm8Qwnek5LCAYtKD9S47co4zmEE/nyeu1ay0xjiQT8c.
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname LEAF-1-2
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api http-commands
+   no shutdown
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Ethernet3
+!
+interface Ethernet4
+!
+interface Ethernet5
+!
+interface Management1
+   ip address 172.16.10.2/24
+!
+no ip routing
+!
+end

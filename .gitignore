@@ -1,0 +1,5 @@
+env
+.drafts
+runbooks/__pycache__
+runbooks/web_gui/nornir.log
+runbooks/nornir.log

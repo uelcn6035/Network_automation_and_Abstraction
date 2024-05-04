@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+
+{% block content %}
+<style>
+    .result-card {
+        max-width: 300px; /* Adjust the maximum width as needed */
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        background-color: #f9f9f9;
+    }
+    .title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .result {
+        font-size: 24px;
+        margin: 0;
+        text-align: center;
+    }
+</style>
+
+<div class="container mt-4">
+    <h1 class="text-center title">Validation Result</h1>
+    <div class="result-card">
+        <p class="result" style="color: {{ color }};">{{ result }}</p>
+    </div>
+</div>
+{% endblock %}

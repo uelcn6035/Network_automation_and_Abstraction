@@ -1,0 +1,63 @@
+! Command: show running-config
+! device: LEAF-3-4 (vEOS-lab, EOS-4.31.1F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username cn6000_project_admin privilege 15 secret sha512 $6$/nbEW/xkhwakEayz$BevaRp3WbcQDzr0WrZvTftB51ngHV/iKScznNzYQqr53pz4vzcG/4sWO63/9Vofit7FvzkjLRkCrKpCwX9a2I0
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname LEAF-3-4
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 2
+   name database
+!
+interface Ethernet1
+   no switchport
+   ip address 10.10.50.13/30
+!
+interface Ethernet2
+   no switchport
+   ip address 10.10.50.9/30
+!
+interface Ethernet3
+   switchport access vlan 2
+!
+interface Ethernet4
+   switchport access vlan 2
+!
+interface Loopback0
+   ip address 2.2.2.2/32
+!
+interface Management1
+   ip address 172.16.10.4/24
+!
+interface Vlan2
+   ip address virtual 10.10.70.14/28
+!
+interface Vxlan1
+   vxlan source-interface Loopback0
+   vxlan udp-port 4789
+   vxlan vlan 2 vni 200
+   vxlan flood vtep 1.1.1.1 3.3.3.3
+!
+ip routing
+!
+router ospf 1
+   network 2.2.2.2/32 area 0.0.0.0
+   network 10.10.50.8/30 area 0.0.0.0
+   network 10.10.50.12/30 area 0.0.0.0
+   network 10.10.70.0/28 area 0.0.0.0
+   max-lsa 12000
+!
+end

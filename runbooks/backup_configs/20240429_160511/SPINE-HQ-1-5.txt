@@ -1,0 +1,310 @@
+!
+
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SPINE-HQ-1-5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition MGMT
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+bsd-client server url https://cloudsso.cisco.com/as/token.oauth2
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name cn6000
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+cts logging verbose
+!
+!
+username cn6000_project_admin privilege 15 secret 5 $1$Bvok$R0jP8lqG/f4DIMeTXGBiS1
+!
+redundancy
+!
+lldp run
+!
+ip ssh version 2
+! 
+!
+!
+!
+!
+crypto isakmp policy 20
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 5
+ lifetime 3600
+crypto isakmp key cn6000 address 20.10.30.37    
+crypto isakmp key cn6000 address 20.10.40.42    
+!
+!
+crypto ipsec transform-set cn6000_project esp-3des esp-md5-hmac 
+ mode tunnel
+!
+!
+!
+crypto map HQ1_vpn 20 ipsec-isakmp 
+ description link to HQ1
+ set peer 20.10.30.37
+ set transform-set cn6000_project 
+ match address 100
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+!
+interface Ethernet0/0
+ vrf forwarding MGMT
+ ip address 172.16.10.5 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 10.10.50.2 255.255.255.252
+!
+interface Ethernet0/2
+ ip address 10.10.50.10 255.255.255.252
+!
+interface Ethernet0/3
+ ip address 10.10.50.18 255.255.255.252
+!
+interface Ethernet1/0
+ no ip address
+ shutdown
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+!
+interface Serial2/0
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/1
+ ip address 20.10.50.29 255.255.255.252
+ serial restart-delay 0
+ crypto map HQ1_vpn
+!
+interface Serial2/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+router ospf 1
+ network 4.4.4.4 0.0.0.0 area 0
+ network 10.10.50.0 0.0.0.3 area 0
+ network 10.10.50.8 0.0.0.3 area 0
+ network 10.10.50.16 0.0.0.3 area 0
+ network 20.10.50.28 0.0.0.3 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+snmp-server community cn6000 RW
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps vrrp
+snmp-server enable traps flowmon
+snmp-server enable traps ds1
+snmp-server enable traps tty
+snmp-server enable traps eigrp
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps xgcp
+snmp-server enable traps isdn call-information
+snmp-server enable traps isdn layer2
+snmp-server enable traps isdn chan-not-avail
+snmp-server enable traps isdn ietf
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps ethernet evc status create delete
+snmp-server enable traps diameter
+snmp-server enable traps auth-framework sec-violation auth-fail
+snmp-server enable traps trustsec-sxp conn-srcaddr-err msg-parse-err conn-config-err binding-err conn-up conn-down binding-expn-fail oper-nodeid-change binding-conflict
+snmp-server enable traps aaa_server
+snmp-server enable traps atm subif
+snmp-server enable traps bfd
+snmp-server enable traps bgp cbgp2
+snmp-server enable traps bstun
+snmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps cnpd
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps dial
+snmp-server enable traps dlsw
+snmp-server enable traps dsp card-status
+snmp-server enable traps dsp oper-state
+snmp-server enable traps dsp video-usage
+snmp-server enable traps dsp video-out-of-resource
+snmp-server enable traps entity-ext
+snmp-server enable traps entity
+snmp-server enable traps fru-ctrl
+snmp-server enable traps resource-policy
+snmp-server enable traps frame-relay multilink bundle-mismatch
+snmp-server enable traps frame-relay
+snmp-server enable traps frame-relay subif
+snmp-server enable traps hsrp
+snmp-server enable traps ipmobile
+snmp-server enable traps ipmulticast
+snmp-server enable traps isis
+snmp-server enable traps mempool
+snmp-server enable traps mpls traffic-eng
+snmp-server enable traps mpls fast-reroute protected
+snmp-server enable traps mpls rfc ldp
+snmp-server enable traps mpls ldp
+snmp-server enable traps msdp
+snmp-server enable traps mvpn
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps pppoe
+snmp-server enable traps cpu threshold
+snmp-server enable traps nhrp nhs
+snmp-server enable traps nhrp nhc
+snmp-server enable traps nhrp nhp
+snmp-server enable traps nhrp quota-exceeded
+snmp-server enable traps rsvp
+snmp-server enable traps ipsla
+snmp-server enable traps stun
+snmp-server enable traps l2tun session
+snmp-server enable traps l2tun pseudowire status
+snmp-server enable traps pw vc
+snmp-server enable traps waas 
+snmp-server enable traps event-manager
+snmp-server enable traps firewall serverstatus
+snmp-server enable traps ospfv3 state-change
+snmp-server enable traps ospfv3 errors
+snmp-server enable traps pki
+snmp-server enable traps gdoi gm-start-registration
+snmp-server enable traps gdoi gm-registration-complete
+snmp-server enable traps gdoi gm-re-register
+snmp-server enable traps gdoi gm-rekey-rcvd
+snmp-server enable traps gdoi gm-rekey-fail
+snmp-server enable traps gdoi ks-rekey-pushed
+snmp-server enable traps gdoi gm-incomplete-cfg
+snmp-server enable traps gdoi ks-no-rsa-keys
+snmp-server enable traps gdoi ks-new-registration
+snmp-server enable traps gdoi ks-reg-complete
+snmp-server enable traps ike policy add
+snmp-server enable traps ike policy delete
+snmp-server enable traps ike tunnel start
+snmp-server enable traps ike tunnel stop
+snmp-server enable traps ipsec cryptomap add
+snmp-server enable traps ipsec cryptomap delete
+snmp-server enable traps ipsec cryptomap attach
+snmp-server enable traps ipsec cryptomap detach
+snmp-server enable traps ipsec tunnel start
+snmp-server enable traps ipsec tunnel stop
+snmp-server enable traps ipsec too-many-sas
+snmp-server enable traps ethernet cfm alarm
+snmp-server enable traps ccme
+snmp-server enable traps srst
+snmp-server enable traps rf
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps mpls vpn
+snmp-server enable traps voice
+snmp-server enable traps dnis
+snmp-server enable traps vrfmib vrf-up vrf-down vnet-trunk-up vnet-trunk-down
+!
+access-list 100 permit ip 10.10.70.0 0.0.0.15 10.10.30.0 0.0.0.15
+access-list 100 permit ip 10.10.70.0 0.0.0.15 10.10.30.16 0.0.0.15
+access-list 100 permit ip 10.10.70.16 0.0.0.15 10.10.30.0 0.0.0.15
+access-list 100 permit ip 10.10.70.16 0.0.0.15 10.10.30.16 0.0.0.15
+access-list 100 permit ip 10.10.70.32 0.0.0.15 10.10.30.0 0.0.0.15
+access-list 100 permit ip 10.10.70.32 0.0.0.15 10.10.30.16 0.0.0.15
+access-list 100 permit ip 10.10.70.0 0.0.0.15 10.10.40.0 0.0.0.15
+access-list 100 permit ip 10.10.70.0 0.0.0.15 10.10.40.16 0.0.0.15
+access-list 100 permit ip 10.10.70.16 0.0.0.15 10.10.40.0 0.0.0.15
+access-list 100 permit ip 10.10.70.16 0.0.0.15 10.10.40.16 0.0.0.15
+access-list 100 permit ip 10.10.70.32 0.0.0.15 10.10.40.0 0.0.0.15
+access-list 100 permit ip 10.10.70.32 0.0.0.15 10.10.40.16 0.0.0.15
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+end

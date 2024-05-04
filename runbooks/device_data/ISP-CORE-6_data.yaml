@@ -1,0 +1,105 @@
+facts:
+  fqdn: ISP-CORE-6.cn6000
+  hostname: ISP-CORE-6
+  os_version: Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.5(2)T, DEVELOPMENT
+    TEST SOFTWARE
+  serial_number: '67108928'
+  uptime: 1020.0
+  vendor: Cisco
+interfaces:
+  Ethernet0/0:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.4000 (bia aabb.cc00.4000)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:40:00
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/1:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.4010 (bia aabb.cc00.4010)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:40:10
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/2:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.4020 (bia aabb.cc00.4020)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:40:20
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/3:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.4030 (bia aabb.cc00.4030)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:40:30
+    mtu: 1500
+    speed: 10.0
+  Serial1/0:
+    Hardware: Hardware is M4T
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial1/1:
+    Hardware: Hardware is M4T
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial1/2:
+    Hardware: Hardware is M4T
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial1/3:
+    Hardware: Hardware is M4T
+    is_enabled: true
+    is_up: false
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial2/0:
+    Hardware: Hardware is M4T
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial2/1:
+    Hardware: Hardware is M4T
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial2/2:
+    Hardware: Hardware is M4T
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial2/3:
+    Hardware: Hardware is M4T
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544

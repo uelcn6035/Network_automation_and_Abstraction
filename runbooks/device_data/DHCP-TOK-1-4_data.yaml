@@ -1,0 +1,57 @@
+facts:
+  fqdn: DHCP-TOK-1-4.cn6000
+  hostname: DHCP-TOK-1-4
+  os_version: Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.5(2)T, DEVELOPMENT
+    TEST SOFTWARE
+  serial_number: '67109040'
+  uptime: 1020.0
+  vendor: Cisco
+interfaces:
+  Ethernet0/0:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.b000 (bia aabb.cc00.b000)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:B0:00
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/1:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.b010 (bia aabb.cc00.b010)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:B0:10
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/1.40:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.b010 (bia aabb.cc00.b010)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:B0:10
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/1.50:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.b010 (bia aabb.cc00.b010)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:B0:10
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/2:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.b020 (bia aabb.cc00.b020)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:B0:20
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/3:
+    Hardware: Hardware is AmdP2, address is aabb.cc00.b030 (bia aabb.cc00.b030)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:00:B0:30
+    mtu: 1500
+    speed: 10.0

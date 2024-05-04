@@ -48,12 +48,13 @@
                                     <!-- Add more details as needed -->
 
                                     <!-- Link to query connected neighbors -->
-                                    <a href="#" class="query-neighbors-link" data-host="{{ data.hostname }}">Query Connected Neighbors</a>
+                                    <a href="#" class="query-neighbors-link" data-host="{{ data.hostname }}">Update Information</a>
 
                                     <!-- Container to display LLDP neighbors -->
+                                    <!-- Container to display LLDP neighbors -->
                                     <div class="lldp-neighbors-container" style="display: none;">
-                                        <p class="neighbor-notice">Click neighbor for detail:</p>
-                                        <ul class="lldp-neighbors-list"></ul>
+                                        <p id="update-message" class="neighbor-notice" style="color: rgb(248, 163, 234);">Fetching new information...</p>
+                                        <p class="neighbor-notice" style="color: green;">Details are up to date. !Cheers</p>
                                     </div>
                                 </div>
                             </td>
@@ -153,23 +154,43 @@
             neighborsContainer.style.display = 'block';
             const host = this.dataset.host;
             fetch(`/lldp_neighbors?host=${host}`)
-                .then(response => response.json())
-                .then(data => {
-                    const neighborsList = neighborsContainer.querySelector('.lldp-neighbors-list');
-                    neighborsList.innerHTML = ''; // Clear previous content
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);  // Add this line
 
-                    // Iterate over the LLDP neighbors information and add it to the neighbors list
-                    for (const [local_intf, neighbors] of Object.entries(data)) {
-                        for (const neighbor of neighbors) {
-                            const listItem = document.createElement('li');
-                            listItem.textContent = `Local Interface: ${local_intf}, Neighbor: ${neighbor.neighbor}, Port: ${neighbor.port}`;
-                            neighborsList.appendChild(listItem);
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching LLDP neighbors:', error);
-                });
+        const neighborsList = neighborsContainer.querySelector('.lldp-neighbors-list');
+        neighborsList.innerHTML = ''; // Clear previous content
+
+        // Iterate over the LLDP neighbors information and add it to the neighbors list
+        for (const [local_intf, neighbors] of Object.entries(data)) {
+            for (const neighbor of neighbors) {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Local Interface: ${local_intf}, Neighbor: ${neighbor.neighbor}, Port: ${neighbor.port}`;
+                neighborsList.appendChild(listItem);
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching LLDP neighbors:', error);
+    });
+
+    // Attach click event listener to 'Update information' link
+    document.querySelectorAll('.update-info-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const updateMessage = document.querySelector('.neighbor-notice');
+
+            // Display the "Fetching new information..." message immediately
+            updateMessage.textContent = 'Fetching new information...';
+
+            // Change the message to "Details are up to date. !Cheers" after 2 seconds
+            setTimeout(function() {
+                updateMessage.textContent = 'Details are up to date. !Cheers';
+            }, 5000);
+        });
+    });
+
+
         });
     });
 </script>

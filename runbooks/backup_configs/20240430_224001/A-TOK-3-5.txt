@@ -1,0 +1,44 @@
+! Command: show running-config
+! device: A-TOK-3-5 (vEOS-lab, EOS-4.31.1F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username cn6000_project_admin privilege 15 secret sha512 $6$jMyJpbMs5.tpHib7$xkBbE/fyuMS09TjEVWnjI82IPVUE7hpTvtJybN1KYLW/Q95LbEO.BOwGFQM.Pm3bdpImPZXt3hhP0ms0.bNvF0
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname A-TOK-3-5
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api http-commands
+   no shutdown
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Ethernet3
+!
+interface Ethernet4
+!
+interface Ethernet5
+!
+interface Ethernet6
+!
+interface Ethernet7
+!
+interface Management1
+   ip address 192.168.10.5/24
+!
+no ip routing
+!
+end

@@ -1,0 +1,96 @@
+facts:
+  fqdn: LEAF-1-2
+  hostname: LEAF-1-2
+  os_version: 4.31.1F-34554157.4311F
+  serial_number: D4B79FED5103A0324BC76C8B60F94374
+  uptime: 1040.2273063659668
+  vendor: Arista
+interfaces:
+  Ethernet1:
+    Hardware: Hardware is Ethernet, address is 5000.00ba.c6f8
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559208.807261
+    mac_address: 50:00:00:BA:C6:F8
+    mtu: 1500
+    speed: 1000.0
+  Ethernet2:
+    Hardware: Hardware is Ethernet, address is 5000.00ba.c6f8
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559208.7748635
+    mac_address: 50:00:00:BA:C6:F8
+    mtu: 1500
+    speed: 1000.0
+  Ethernet3:
+    Hardware: Hardware is Ethernet, address is 5000.000f.0003 (bia 5000.000f.0003)
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559208.7774048
+    mac_address: 50:00:00:0F:00:03
+    mtu: 9214
+    speed: 1000.0
+  Ethernet4:
+    Hardware: Hardware is Ethernet, address is 5000.000f.0004 (bia 5000.000f.0004)
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559208.819096
+    mac_address: 50:00:00:0F:00:04
+    mtu: 9214
+    speed: 1000.0
+  Ethernet5:
+    Hardware: Hardware is Ethernet, address is 5000.000f.0005 (bia 5000.000f.0005)
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559208.7762265
+    mac_address: 50:00:00:0F:00:05
+    mtu: 9214
+    speed: 1000.0
+  Loopback0:
+    Hardware: Hardware is Loopback
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559314.0699174
+    mac_address: ''
+    mtu: 65535
+    speed: 0.0
+  Management1:
+    Hardware: Hardware is Ethernet, address is 5000.000f.0000 (bia 5000.000f.0000)
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559160.2934778
+    mac_address: 50:00:00:0F:00:00
+    mtu: 1500
+    speed: 1000.0
+  Vlan2:
+    Hardware: Hardware is Vlan, address is 5000.00ba.c6f8 (bia 5000.00ba.c6f8)
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559321.5298517
+    mac_address: 50:00:00:BA:C6:F8
+    mtu: 1500
+    speed: 0.0
+  Vlan3:
+    Hardware: Hardware is Vlan, address is 5000.00ba.c6f8 (bia 5000.00ba.c6f8)
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559322.881137
+    mac_address: 50:00:00:BA:C6:F8
+    mtu: 1500
+    speed: 0.0
+  Vlan4:
+    Hardware: Hardware is Vlan, address is 5000.00ba.c6f8 (bia 5000.00ba.c6f8)
+    is_enabled: true
+    is_up: true
+    last_flapped: 1714559323.144411
+    mac_address: 50:00:00:BA:C6:F8
+    mtu: 1500
+    speed: 0.0
+  Vxlan1:
+    Hardware: Hardware is Vxlan
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 0
+    speed: 0.0

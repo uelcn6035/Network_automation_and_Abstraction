@@ -1,0 +1,8 @@
+facts:
+  fqdn: Unknown
+  hostname: Unknown
+  os_version: Unknown
+  serial_number: Unknown
+  uptime: -1.0
+  vendor: Cisco
+interfaces: {}

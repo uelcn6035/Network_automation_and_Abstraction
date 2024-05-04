@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <div class="row">
+        {% for host, config in data.items() %}
+            <div class="col-md-3">
+                <h5>{{ host }}</h5>
+                <pre id="{{ host }}-config" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ config }}</pre>
+                <button onclick="unwrapConfig('{{ host }}')">Unwrap</button>
+            </div>
+            {% if loop.index % 4 == 0 %}
+                </div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+    <!-- Add pagination here -->
+    <script>
+        function unwrapConfig(host) {
+            var pre = document.getElementById(host + '-config');
+            if (pre.style.whiteSpace !== 'normal') {
+                // Replace newline characters with spaces and '!' with '!<br>'
+                var text = pre.textContent.replace(/\n/g, ' ').replace(/!/g, '!<br>');
+                pre.innerHTML = text;
+        
+                pre.style.whiteSpace = 'normal';
+                pre.style.overflow = 'auto';
+                pre.style.backgroundColor = 'skyblue';  // Change this to any color you like
+            } else {
+                // Wrap the content
+                var text = pre.textContent.replace(/ /g, '\n').replace(/!<br>/g, '!');
+                pre.textContent = text;
+        
+                pre.style.whiteSpace = 'nowrap';
+                pre.style.overflow = 'hidden';
+                pre.style.textOverflow = 'ellipsis';
+                pre.style.backgroundColor = 'transparent';
+            }
+        }
+    </script>
+    
+    
+
+    
+    
+{% endblock %}

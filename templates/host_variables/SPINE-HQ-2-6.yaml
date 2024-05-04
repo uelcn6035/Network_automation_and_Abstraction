@@ -10,7 +10,7 @@ ip_scp_server: enable
 archive:
   path: flash:archive
 interfaces:
-  - name: s1/2
+  - name: s2/1
     ip_address: 20.10.50.25
     subnet_mask: 255.255.255.252
     status: no shutdown
@@ -83,5 +83,5 @@ ipsec_config:
     transform_set: cn6000_project
     match_address: 100
 interface:
-    - name: s1/2
+    - name: s2/1
       crypto_map: HQ2_vpn

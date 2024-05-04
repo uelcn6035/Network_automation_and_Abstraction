@@ -1,0 +1,51 @@
+{% extends "master.html" %}
+
+{% block content %}
+<style>
+    .card {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .heading {
+        font-size: 24px; /* Adjust font size as needed */
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="card">
+        <h1 class="text-center heading">Validate a Device</h1>
+        <form id="validationForm" action="/validate_device" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" id="serial_number" name="serial_number" required placeholder="Serial Number">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="vendor" name="vendor" required placeholder="Vendor">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="fqdn" name="fqdn" placeholder="FQDN">
+            </div>
+            <button type="button" class="btn btn-primary btn-block" onclick="validateForm()">Validate Now</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function validateForm() {
+    var serialNumber = document.getElementById("serial_number").value;
+    var vendor = document.getElementById("vendor").value;
+    var fqdn = document.getElementById("fqdn").value;
+
+    if (serialNumber === "" || vendor === "" || fqdn === "") {
+        alert("Please fill out all required fields.");
+    } else {
+        document.getElementById("validationForm").submit();
+    }
+}
+</script>
+{% endblock %}

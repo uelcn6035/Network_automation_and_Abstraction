@@ -1,0 +1,113 @@
+facts:
+  fqdn: SPINE-HQ-1-5.cn6000
+  hostname: SPINE-HQ-1-5
+  os_version: Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.5(2)T, DEVELOPMENT
+    TEST SOFTWARE
+  serial_number: '67109504'
+  uptime: 1080.0
+  vendor: Cisco
+interfaces:
+  Ethernet0/0:
+    Hardware: Hardware is AmdP2, address is aabb.cc02.8000 (bia aabb.cc02.8000)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:80:00
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/1:
+    Hardware: Hardware is AmdP2, address is aabb.cc02.8010 (bia aabb.cc02.8010)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:80:10
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/2:
+    Hardware: Hardware is AmdP2, address is aabb.cc02.8020 (bia aabb.cc02.8020)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:80:20
+    mtu: 1500
+    speed: 10.0
+  Ethernet0/3:
+    Hardware: Hardware is AmdP2, address is aabb.cc02.8030 (bia aabb.cc02.8030)
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:80:30
+    mtu: 1500
+    speed: 10.0
+  Ethernet1/0:
+    Hardware: Hardware is AmdP2, address is aabb.cc02.8001 (bia aabb.cc02.8001)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:80:01
+    mtu: 1500
+    speed: 10.0
+  Ethernet1/1:
+    Hardware: Hardware is AmdP2, address is aabb.cc02.8011 (bia aabb.cc02.8011)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:80:11
+    mtu: 1500
+    speed: 10.0
+  Ethernet1/2:
+    Hardware: Hardware is AmdP2, address is aabb.cc02.8021 (bia aabb.cc02.8021)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:80:21
+    mtu: 1500
+    speed: 10.0
+  Ethernet1/3:
+    Hardware: Hardware is AmdP2, address is aabb.cc02.8031 (bia aabb.cc02.8031)
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: AA:BB:CC:02:80:31
+    mtu: 1500
+    speed: 10.0
+  Loopback0:
+    Hardware: Hardware is Loopback
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1514
+    speed: 8000.0
+  Serial2/0:
+    Hardware: Hardware is M4T
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial2/1:
+    Hardware: Hardware is M4T
+    is_enabled: true
+    is_up: true
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial2/2:
+    Hardware: Hardware is M4T
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544
+  Serial2/3:
+    Hardware: Hardware is M4T
+    is_enabled: false
+    is_up: false
+    last_flapped: -1.0
+    mac_address: ''
+    mtu: 1500
+    speed: 1.544

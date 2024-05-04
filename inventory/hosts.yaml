@@ -1,4 +1,23 @@
 ---
+A-TOK-2-2:
+    hostname: "192.168.10.2"
+    groups:
+        - tokyo_branch
+        - arista_gear
+        - load_balancing
+
+A-TOK-3-5:
+    hostname: "192.168.10.5"
+    groups:
+        - tokyo_branch
+        - arista_gear
+        - load_balancing
+
+DHCP-TOK-1-4:
+    hostname: "192.168.10.4"
+    groups:
+        - tokyo_branch
+        - dhcp_server
 
 C-TOK-1-3:
     hostname: "192.168.10.3"
@@ -46,3 +65,22 @@ LEAF-HQ-3-4:
     data:
         role: leaf
 
+SPINE-HQ-1-5:
+    hostname: "172.16.10.5"
+    groups:
+        - last_resort
+    data:
+        role: spine
+
+SPINE-HQ-2-6:
+    hostname: "172.16.10.6"
+    groups:
+        - last_resort
+    data:
+        role: spine
+
+ISP-CORE-6:
+    hostname: "192.168.10.6"
+    groups:
+        - isp
+        - leaf_switches
