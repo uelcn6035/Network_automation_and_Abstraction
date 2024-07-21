@@ -13,4 +13,3 @@
 
 ## Keywords
 Network Automation, Nornir, Scrapli, Napalm, Jinja2, OSPF, IPSec, Network Security, Python Scripts, Device Backups, Real-Time Monitoring, Network Device Validation, Configuration Management.
-/
