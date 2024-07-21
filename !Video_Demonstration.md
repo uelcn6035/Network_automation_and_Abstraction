@@ -1,4 +1,3 @@
-!Watch the video
 
 > :arrow_forward: **Click on the image below to watch the video!**
 
