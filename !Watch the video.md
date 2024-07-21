@@ -5,5 +5,3 @@
 />](https://www.youtube.com/embed/8RrYqJJq8sM)
 
 > :arrow_forward: **Click on the image above to watch the video!**
-
-
